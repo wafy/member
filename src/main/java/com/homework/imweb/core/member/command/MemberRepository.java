@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Member save(Member member);
+
+    void deleteByIdx(Long idx);
 }

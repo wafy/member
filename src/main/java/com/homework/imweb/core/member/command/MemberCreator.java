@@ -10,7 +10,7 @@ public class MemberCreator {
 
     private final MemberRepository memberRepository;
 
-    public void create(Member member) {
-        memberRepository.save(member);
+    public Member create(Member member) {
+       return memberRepository.save(member);
     }
 }
