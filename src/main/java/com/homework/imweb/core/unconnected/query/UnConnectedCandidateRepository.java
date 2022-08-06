@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface UnConnectedCandidateRepository extends JpaRepository<Member, Long> {
 
-    @Query(value = "select new java.lang.Long(u.idx) from Member u " +
+    @Query(value = "select u from Member u " +
             " where u.lastLoginTime <= :unConnectedDate")
-    List<Long> findByUnConnectedCandidate(@Param("unConnectedDate") LocalDateTime unConnectedDate);
+    List<Member> findByUnConnectedCandidate(@Param("unConnectedDate") LocalDateTime unConnectedDate);
 
 }

@@ -1,5 +1,6 @@
 package com.homework.imweb.core.unconnected.query;
 
+import com.homework.imweb.core.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ public class UnConnectedCandidateSearcher {
     private final UnConnectedCandidateRepository unConnectedCandidateRepository;
 
 
-    public List<Long> findUnConnectedCandidate(LocalDateTime lastLoginDate) {
+    public List<Member> findUnConnectedCandidate(LocalDateTime lastLoginDate) {
         return unConnectedCandidateRepository.findByUnConnectedCandidate(lastLoginDate);
     }
 }

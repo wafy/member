@@ -1,6 +1,7 @@
 package com.homework.imweb.core.member.query;
 
 import com.homework.imweb.TestSupplier;
+import com.homework.imweb.core.member.Member;
 import com.homework.imweb.core.member.fixture.MemberFixture;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -33,10 +34,10 @@ class UnConnectedCandidateSearcherTest extends TestSupplier {
         class Context_last_login_date {
 
             @Test
-            @DisplayName("마지막 로그인 날짜가 3개월 지난 사용자아이디를 모두 반환한다")
+            @DisplayName("마지막 로그인 날짜가 3개월 지난 사용자를 모두 반환한다")
             void it_returns_last_login_user() {
                 LocalDateTime givenLastLoginDate = LocalDateTime.now().minusMonths(3);
-                List<Long> resultCount = getUnConnectedCandidateSearcher().findUnConnectedCandidate(givenLastLoginDate);
+                List<Member> resultCount = getUnConnectedCandidateSearcher().findUnConnectedCandidate(givenLastLoginDate);
 
                 Assertions.assertEquals(givenCandidateCount, resultCount.size());
             }
