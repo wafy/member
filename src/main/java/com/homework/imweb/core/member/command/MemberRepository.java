@@ -9,5 +9,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Member save(Member member);
 
-    void deleteByIdx(Long idx);
+    void deleteById(Long idx);
 }
