@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity
-@Table(name = "member")
+@Table(name = "member",
+indexes = @Index(name ="idx_last_login_time", columnList = "last_login_time"))
 public class Member {
 
     @Id
@@ -22,6 +23,7 @@ public class Member {
 
     private LocalDateTime joinDate;
 
+    @Column(name = "last_login_time")
     private LocalDateTime lastLoginTime;
 
     public Member() {}
