@@ -2,7 +2,6 @@ package com.homework.imweb.core.unconnected.command;
 
 import com.homework.imweb.core.member.Member;
 import com.homework.imweb.core.member.command.MemberDeleter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 
-
+@Service
 @RequiredArgsConstructor
 public class IssueService {
 
@@ -19,6 +18,8 @@ public class IssueService {
     private final UnConnectedCreator unConnectedCreator;
 
     private final MemberDeleter memberDeleter;
+
+
 
 
     public boolean unConnectedIssue(List<Member> candidates) {
