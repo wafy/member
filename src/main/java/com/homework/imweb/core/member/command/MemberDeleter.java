@@ -14,6 +14,6 @@ public class MemberDeleter {
 
     @Transactional
     public void delete(Long idx) {
-        memberRepository.deleteById(idx);
+        memberRepository.softDelete(idx);
     }
 }
