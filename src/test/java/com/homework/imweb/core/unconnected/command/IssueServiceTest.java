@@ -3,12 +3,14 @@ package com.homework.imweb.core.unconnected.command;
 import com.homework.imweb.TestSupplier;
 import com.homework.imweb.core.member.Member;
 import com.homework.imweb.core.member.fixture.MemberFixture;
+import com.homework.imweb.core.unconnected.UnConnectedMember;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ForkJoinPool;
 
 @SpringBootTest
@@ -43,12 +45,12 @@ class IssueServiceTest extends TestSupplier {
         class Context_unConnected_member {
 
             @Test
-            @DisplayName("회원테이블에서 삭제 후 장기 미사용 테이블에 등록한다")
+            @DisplayName("회원테이블에서 소프트딜리트후  장기 미사용 테이블에 등록한다")
             void it_returns_delete_and_unconnected_save() {
                 List<Member> candidate = getUnConnectedCandidateSearcher().findUnConnectedCandidate(LocalDate.now());
                 getIssueService().unConnectedIssue(candidate);
-                Assertions.assertThrows(IllegalArgumentException.class ,
-                        () -> getMemberSearcher().findByIdx(savedMember.getIdx()));
+                Optional<UnConnectedMember> unConnectedMember = getUnConnectedSearcher().findByMemberIdx(savedMember.getIdx());
+                Assertions.assertNotNull(unConnectedMember.get());
             }
         }
     }

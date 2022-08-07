@@ -9,6 +9,8 @@ import com.homework.imweb.core.unconnected.command.UnConnectedCreator;
 import com.homework.imweb.core.unconnected.command.UnConnectedMemberRepository;
 import com.homework.imweb.core.unconnected.query.UnConnectedCandidateRepository;
 import com.homework.imweb.core.unconnected.query.UnConnectedCandidateSearcher;
+import com.homework.imweb.core.unconnected.query.UnConnectedSearchRepository;
+import com.homework.imweb.core.unconnected.query.UnConnectedSearcher;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,11 @@ public abstract class TestSupplier implements ForTestOnly {
     private UnConnectedMemberRepository unConnectedMemberRepository;
 
 
+    @Autowired
+    @Getter(AccessLevel.PROTECTED)
+    private UnConnectedSearchRepository unConnectedSearchRepository;
+
+
     private MemberCreator memberCreator;
 
     private MemberDeleter memberDeleter;
@@ -41,6 +48,8 @@ public abstract class TestSupplier implements ForTestOnly {
     private UnConnectedCandidateSearcher unConnectedCandidateSearcher;
 
     private UnConnectedCreator unConnectedCreator;
+
+    private UnConnectedSearcher unConnectedSearcher;
 
 
 
@@ -64,6 +73,10 @@ public abstract class TestSupplier implements ForTestOnly {
 
     protected UnConnectedCreator getUnConnectedCreator() {
         return unConnectedCreator == null ? new UnConnectedCreator(unConnectedMemberRepository): unConnectedCreator;
+    }
+
+    protected  UnConnectedSearcher getUnConnectedSearcher() {
+        return unConnectedSearcher == null ? new UnConnectedSearcher(unConnectedSearchRepository): unConnectedSearcher;
     }
 
 
